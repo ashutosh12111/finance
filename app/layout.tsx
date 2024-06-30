@@ -9,6 +9,9 @@ import {
   UserButton
 } from '@clerk/nextjs'
 import { QueryProvider } from "@/providers/query-provider";
+import { SheetProvider } from "@/providers/sheet-provider";
+import { Toaster } from "@/components/ui/sonner";
+import { QueryClient } from "@tanstack/react-query";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,15 +25,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const queryClient = new QueryClient()
+
   return (
     <ClerkProvider>
-    <html lang="en">
-      <body className={inter.className}>
-        <QueryProvider>
-        {children}
-        </QueryProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <QueryProvider>
+            <SheetProvider />
+            <Toaster />
+
+            {children}
+          </QueryProvider>
         </body>
-    </html>
+      </html>
     </ClerkProvider>
   );
 }

@@ -10,7 +10,7 @@ export const runtime = "edge";
 const app = new Hono().basePath("/api");
 
 // app.route("/accounts", accounts)
-const route = app.route("/accounts",accounts)
+const route = app.route("/accounts", accounts)
 
 
 // app.get("/hello", clerkMiddleware(), (c) => {
@@ -29,4 +29,7 @@ const route = app.route("/accounts",accounts)
 
 export const GET = handle(app);
 export const POST = handle(app);
+export const PATCH = handle(app);
+export const DELETE = handle(app);
+
 export type AppType = typeof route

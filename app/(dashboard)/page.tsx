@@ -1,16 +1,17 @@
 "use client"
 import { Button } from "@/components/ui/button";
-import { useGetAccounts } from "@/feature/accounts/api/use-get-account";
+
+import { useNewAccount } from "@/feature/accounts/hooks/useNewAccounts";
 import { UserButton } from "@clerk/nextjs";
 
 export default function Home() {
-  const {data, isLoading} = useGetAccounts()
-  console.log(isLoading)
+const {onOpen} =   useNewAccount()
+
 
   return (
     <div>
-      <UserButton afterSignOutUrl="/" />
-      This is authenticated route.
+      {/* <UserButton afterSignOutUrl="/" /> */}
+<Button onClick={onOpen}> Add new account</Button>
     </div>
   );
 }
